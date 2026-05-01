@@ -3,78 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>주)윤성스터디 | 2027 수능대비 Team 지하실</title>
+    <title>주)윤성스터디 | Team 지하실 자료실</title>
     <style>
-        :root { --primary-color: #2c3e50; --accent-color: #e74c3c; --bg-color: #f4f7f6; }
-        body { font-family: 'Pretendard', sans-serif; margin: 0; background-color: var(--bg-color); color: #333; }
-        
-        .nav-header { position: fixed; top: 0; left: 0; width: 100%; background: #fff; padding: 15px 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; }
-        .nav-logo { font-size: 1.25rem; font-weight: 900; color: var(--primary-color); }
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+        }
+        * { box-sizing: border-box; }
+        body { 
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; 
+            margin: 0; padding: 0; background-color: var(--bg-color); color: #333; line-height: 1.6;
+        }
 
-        .container { max-width: 1100px; margin: 120px auto 60px; padding: 0 20px; }
-        .hero { text-align: center; margin-bottom: 60px; }
-        
-        .subject-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
-        .subject-card { background: #fff; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 5px solid var(--primary-color); }
-        .subject-header { padding: 20px 25px; background: #fafafa; border-bottom: 1px solid #eee; }
-        .subject-header h2 { margin: 0; font-size: 1.3rem; color: var(--primary-color); }
-        
-        .file-list { padding: 15px 20px; }
-        .category-label { font-size: 0.8rem; font-weight: 700; color: var(--accent-color); margin: 15px 0 10px; display: block; border-bottom: 1px solid #eee; }
+        /* 좌측 상단 로고 */
+        .nav-header { 
+            position: fixed; top: 0; left: 0; width: 100%; 
+            background: rgba(255, 255, 255, 0.98); 
+            padding: 15px 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; 
+        }
+        .nav-logo { font-size: 1.2rem; font-weight: 800; color: var(--primary-color); }
 
-        /* 이미지 포함 리스트 아이템 스타일 */
-        .file-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
-        .file-item:last-child { border-bottom: none; }
-        
-        /* 표지 이미지 스타일 */
-        .cover-thumb { width: 60px; height: 80px; object-fit: cover; border-radius: 6px; margin-right: 15px; border: 1px solid #ddd; background: #eee; }
-        
-        .file-content { flex: 1; display: flex; flex-direction: column; }
-        .file-name { font-size: 0.95rem; font-weight: 600; margin-bottom: 5px; }
-        .badge { font-size: 0.7rem; padding: 2px 5px; border-radius: 3px; background: #e9ecef; margin-right: 5px; }
-        
-        .btn-download { text-decoration: none; background: var(--primary-color); color: #fff; padding: 5px 12px; border-radius: 5px; font-size: 0.8rem; align-self: flex-start; }
-        .btn-download:hover { background: var(--accent-color); }
+        .container { max-width: 1200px; margin: 100px auto 60px; padding: 20px; }
+        .hero { text-align: center; margin-bottom: 50px; }
+        .hero h1 { font-size: 2.2rem; margin-bottom: 10px; color: #111; }
 
-        footer { text-align: center; padding: 40px; color: #888; font-size: 0.9rem; }
+        .subject-grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 30px; 
+        }
+        @media (min-width: 768px) { .subject-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1100px) { .subject-grid { grid-template-columns: repeat(3, 1fr); } }
+
+        .subject-card { 
+            background: var(--card-bg); border-radius: 16px; 
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08); overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .subject-header { 
+            padding: 20px; background: #fdfdfd; border-bottom: 1px solid #eee;
+            font-size: 1.4rem; font-weight: 800; color: var(--primary-color); text-align: center;
+        }
+
+        .file-list { padding: 20px; }
+        .category-tag { 
+            display: block; font-size: 0.85rem; font-weight: 700; color: var(--accent-color);
+            margin: 15px 0 10px; border-bottom: 2px solid #f0f0f0; padding-bottom: 5px;
+        }
+
+        .file-item { 
+            display: flex; flex-direction: column; 
+            padding: 20px 0; border-bottom: 1px solid #f5f5f5;
+        }
+        @media (min-width: 480px) { .file-item { flex-direction: row; align-items: center; } }
+
+        /* 표지 이미지 크게 설정 */
+        .cover-img { 
+            width: 130px; height: 180px; 
+            object-fit: cover; border-radius: 8px; 
+            margin: 0 auto 15px auto; border: 1px solid #ddd; flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        @media (min-width: 480px) { .cover-img { margin: 0 20px 0 0; } }
+
+        .file-info { flex: 1; text-align: center; }
+        @media (min-width: 480px) { .file-info { text-align: left; } }
+
+        .file-title { 
+            display: block; font-size: 1.05rem; font-weight: 700; margin-bottom: 12px;
+            color: #222; line-height: 1.4;
+        }
+        .badge { font-size: 0.75rem; padding: 3px 6px; border-radius: 4px; background: #34495e; color: white; margin-right: 5px; }
+
+        .btn-dl { 
+            display: inline-block; text-decoration: none; background: var(--primary-color); 
+            color: white; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; 
+            font-weight: 600; transition: 0.3s; width: 100%; text-align: center;
+        }
+        @media (min-width: 480px) { .btn-dl { width: auto; } }
+        .btn-dl:hover { background: var(--accent-color); transform: translateY(-2px); }
+
+        footer { text-align: center; padding: 60px 20px; color: #999; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-    <header class="nav-header"><div class="nav-logo">주)윤성스터디</div></header>
+    <header class="nav-header">
+        <div class="nav-logo">주)윤성스터디</div>
+    </header>
 
-    <div class="container">
+    <main class="container">
         <div class="hero">
-            <h1>☠ 2027 수능대비 Team 지하실</h1>
-            <p>직업탐구 커리큘럼 자료실</p>
+            <h1>☠ 2027 Team 지하실 커리큘럼</h1>
+            <p>직업탐구 n개년치는 확실히 보고 들어간다!</p>
         </div>
 
-        <div class="subject-container">
+        <div class="subject-grid">
             <!-- 농업 기초 기술 -->
             <section class="subject-card">
-                <div class="subject-header"><h2>농업 기초 기술</h2></div>
+                <div class="subject-header">농업 기초 기술</div>
                 <div class="file-list">
-                    <span class="category-label">기초 개념 & 실전</span>
+                    <span class="category-tag">기초 개념 & 실전</span>
                     <div class="file-item">
-                        <img src="1.png" alt="검은 후드 캐릭터" class="cover-thumb">
-                        <div class="file-content">
-                            <span class="file-name"><span class="badge">2026</span> 수능특+ 개념편</span>
-                            <a href="#" class="btn-download">다운로드</a>
+                        <img src="1.png" alt="농업 개념" class="cover-img">
+                        <div class="file-info">
+                            <span class="file-title"><span class="badge">2026</span> 수능특+强强 개념편</span>
+                            <a href="#" class="btn-dl">자료 다운로드</a>
                         </div>
                     </div>
                     <div class="file-item">
-                        <img src="2.png" alt="별 헤일로 캐릭터" class="cover-thumb">
-                        <div class="file-content">
-                            <span class="file-name"><span class="badge">2026</span> 수능특+ 문제편</span>
-                            <a href="#" class="btn-download">다운로드</a>
+                        <img src="2.png" alt="농업 문제" class="cover-img">
+                        <div class="file-info">
+                            <span class="file-title"><span class="badge">2026</span> 수능특+强强 문제편</span>
+                            <a href="#" class="btn-dl">자료 다운로드</a>
                         </div>
                     </div>
-                    <span class="category-label">트레이닝</span>
+                    <span class="category-tag">트레이닝</span>
                     <div class="file-item">
-                        <img src="11.png" alt="근육남 캐릭터" class="cover-thumb">
-                        <div class="file-content">
-                            <span class="file-name">직업기출분석</span>
-                            <a href="#" class="btn-download">다운로드</a>
+                        <img src="11.png" alt="농업 기출분석" class="cover-img">
+                        <div class="file-info">
+                            <span class="file-title">직업기출분석 (농기공)</span>
+                            <a href="#" class="btn-dl">자료 다운로드</a>
                         </div>
                     </div>
                 </div>
@@ -82,36 +133,36 @@
 
             <!-- 상업경제 -->
             <section class="subject-card">
-                <div class="subject-header"><h2>상업경제</h2></div>
+                <div class="subject-header">상업경제</div>
                 <div class="file-list">
-                    <span class="category-label">기초 개념 & 실전</span>
+                    <span class="category-tag">기초 개념 & 실전</span>
                     <div class="file-item">
-                        <img src="3.png" alt="베이지 긴머리 캐릭터" class="cover-thumb">
-                        <div class="file-content">
-                            <span class="file-name"><span class="badge">2027</span> 수능특+ 개념편</span>
-                            <a href="#" class="btn-download">다운로드</a>
+                        <img src="3.png" alt="상경 개념" class="cover-img">
+                        <div class="file-info">
+                            <span class="file-title"><span class="badge">2027</span> 수능특+强强 개념편</span>
+                            <a href="#" class="btn-dl">자료 다운로드</a>
                         </div>
                     </div>
                     <div class="file-item">
-                        <img src="4.png" alt="고양이 귀 캐릭터" class="cover-thumb">
-                        <div class="file-content">
-                            <span class="file-name"><span class="badge">2027</span> 수능특+ 문제편</span>
-                            <a href="#" class="btn-download">다운로드</a>
+                        <img src="4.png" alt="상경 문제 2027" class="cover-img">
+                        <div class="file-info">
+                            <span class="file-title"><span class="badge">2027</span> 수능특+强强 문제편</span>
+                            <a href="#" class="btn-dl">자료 다운로드</a>
                         </div>
                     </div>
                     <div class="file-item">
-                        <img src="5.png" alt="뿔 달린 캐릭터" class="cover-thumb">
-                        <div class="file-content">
-                            <span class="file-name"><span class="badge">2026</span> 수능특+ 문제편</span>
-                            <a href="#" class="btn-download">다운로드</a>
+                        <img src="5.png" alt="상경 문제 2026" class="cover-img">
+                        <div class="file-info">
+                            <span class="file-title"><span class="badge">2026</span> 수능특+强强 문제편</span>
+                            <a href="#" class="btn-dl">자료 다운로드</a>
                         </div>
                     </div>
-                    <span class="category-label">트레이닝</span>
+                    <span class="category-tag">트레이닝</span>
                     <div class="file-item">
-                        <img src="9.png" alt="근육남 캐릭터" class="cover-thumb">
-                        <div class="file-content">
-                            <span class="file-name">직업기출분석</span>
-                            <a href="#" class="btn-download">다운로드</a>
+                        <img src="10.png" alt="상경 기출분석" class="cover-img">
+                        <div class="file-info">
+                            <span class="file-title">직업기출분석 (상업경제)</span>
+                            <a href="#" class="btn-dl">자료 다운로드</a>
                         </div>
                     </div>
                 </div>
@@ -119,45 +170,45 @@
 
             <!-- 성공적인 직업생활 -->
             <section class="subject-card">
-                <div class="subject-header"><h2>성공적인 직업생활</h2></div>
+                <div class="subject-header">성공적인 직업생활</div>
                 <div class="file-list">
-                    <span class="category-label">기초 개념 & 실전</span>
+                    <span class="category-tag">기초 개념 & 실전</span>
                     <div class="file-item">
-                        <img src="6.png" alt="분홍색 크리처" class="cover-thumb">
-                        <div class="file-content">
-                            <span class="file-name"><span class="badge">2027</span> 수능특+强强 개념편</span>
-                            <a href="#" class="btn-download">다운로드</a>
+                        <img src="6.png" alt="성직 개념" class="cover-img">
+                        <div class="file-info">
+                            <span class="file-title"><span class="badge">2027</span> 수능특+强强 개념편</span>
+                            <a href="#" class="btn-dl">자료 다운로드</a>
                         </div>
                     </div>
                     <div class="file-item">
-                        <img src="7.png" alt="코트 입은 캐릭터" class="cover-thumb">
-                        <div class="file-content">
-                            <span class="file-name"><span class="badge">2027</span> 수능특+ 문제편</span>
-                            <a href="#" class="btn-download">다운로드</a>
+                        <img src="7.png" alt="성직 문제 2027" class="cover-img">
+                        <div class="file-info">
+                            <span class="file-title"><span class="badge">2027</span> 수능특+强强 문제편</span>
+                            <a href="#" class="btn-dl">자료 다운로드</a>
                         </div>
                     </div>
                     <div class="file-item">
-                        <img src="8.png" alt="노란색 날개 크리처" class="cover-thumb">
-                        <div class="file-content">
-                            <span class="file-name"><span class="badge">2026</span> 수능특+ 문제편</span>
-                            <a href="#" class="btn-download">다운로드</a>
+                        <img src="8.png" alt="성직 문제 2026" class="cover-img">
+                        <div class="file-info">
+                            <span class="file-title"><span class="badge">2026</span> 수능특+强强 문제편</span>
+                            <a href="#" class="btn-dl">자료 다운로드</a>
                         </div>
                     </div>
-                    <span class="category-label">트레이닝</span>
+                    <span class="category-tag">트레이닝</span>
                     <div class="file-item">
-                        <img src="10.png" alt="근육남 캐릭터" class="cover-thumb">
-                        <div class="file-content">
-                            <span class="file-name">직업기출분석</span>
-                            <a href="#" class="btn-download">다운로드</a>
+                        <img src="9.png" alt="성직 기출분석" class="cover-img">
+                        <div class="file-info">
+                            <span class="file-title">직업기출분석 (성직선)</span>
+                            <a href="#" class="btn-dl">자료 다운로드</a>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
-    </div>
+    </main>
 
     <footer>
-        <p>&copy; 2027 주)윤성스터디 & Team Basement All rights reserved.</p>
+        <p>&copy; 2027 주)윤성스터디 & Team Basement. All rights reserved.</p>
     </footer>
 
 </body>
